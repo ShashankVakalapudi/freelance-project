@@ -4,54 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WELIVING - The Gen-X Housing Platform</title>
+    <meta name="description" content="Fastest-growing housing network in Hyd & BLR offering Corporate Stays, Weekend Housing & Property Management.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        /* Import Outfit Font */
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+        /* --- FONT SETUP --- */
+        /* Headings Font */
+        @font-face {
+            font-family: 'Salmond';
+            src: url('./fonts/Salmond-Semibold.otf') format('opentype'),
+                 url('./fonts/Salmond-Semibold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Salmond';
+            src: url('./fonts/Salmond-Light.woff2') format('woff2');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
 
-        /* Custom Hover Utilities */
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: rgba(38, 49, 192, 0.1); 
-        }
+        /* Body Font (Index Regular / Outfit) */
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+        /* --- CUSTOM UTILITIES --- */
+        .card-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08); }
         
-        .image-container {
-            overflow: hidden;
-        }
-        .image-hover {
-            transition: transform 0.7s ease;
-        }
-        .image-container:hover .image-hover {
-            transform: scale(1.03);
-        }
+        .image-container { overflow: hidden; }
+        .image-hover { transition: transform 0.7s ease; }
+        .image-container:hover .image-hover { transform: scale(1.03); }
 
-        /* Hero Background */
+        /* Hero Background with Fallback */
         .hero-bg {
             background-image: url('./hero section BG.png'); 
             background-size: cover;
-            background-position: center;
+            background-position: center top;
             background-repeat: no-repeat;
-            background-color: #1e3a8a; 
+            background-color: #0B1120; 
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        /* Custom Jumping Star Animation */
+        @keyframes jump {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9; 
+        .animate-jump {
+            animation: jump 2s infinite ease-in-out;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1; 
-            border-radius: 4px;
-        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 
     <script>
@@ -59,13 +70,14 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#2631C0', // Exact Primary Color
+                        primary: '#2631C0', 
                         secondary: '#1e3a8a', 
                         light: '#eff6ff', 
                         dark: '#0f172a',
                     },
                     fontFamily: {
-                        sans: ['Salmond', 'Outfit', 'sans-serif'],
+                        heading: ['Salmond', 'Playfair Display', 'serif'],
+                        sans: ['Outfit', 'sans-serif'],
                     },
                     borderRadius: {
                         '4xl': '2.5rem',
@@ -75,47 +87,47 @@
         }
     </script>
 </head>
-<body class="font-sans font-normal text-slate-600 bg-light antialiased overflow-x-hidden w-full">
+<body class="font-sans font-normal text-slate-600 bg-slate-50 antialiased overflow-x-hidden w-full">
 
-    <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md z-[999] border-b border-slate-100 transition-all duration-300">
+    <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md z-[999] border-b-2 border-slate-100 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 
-                <div class="flex-shrink-0 flex items-center w-40">
+                <a href="#contact" class="flex-shrink-0 flex items-center w-40 cursor-pointer">
                     <img src="./logo.png" alt="WELIVING Logo" class="h-10 w-auto object-contain">
-                </div>
+                </a>
 
-                <div class="hidden md:flex flex-1 justify-center items-center space-x-10">
-                    <a href="#hero" class="text-sm font-semibold text-slate-600 hover:text-primary transition">Home</a>
-                    <a href="#about" class="text-sm font-semibold text-slate-600 hover:text-primary transition">About</a>
-                    <a href="#platforms" class="text-sm font-semibold text-slate-600 hover:text-primary transition">Platforms</a>
-                    <a href="#quality" class="text-sm font-semibold text-slate-600 hover:text-primary transition">Quality</a>
-                    <a href="#testimonials" class="text-sm font-semibold text-slate-600 hover:text-primary transition">Testimonials</a>
-                    <a href="#contact" class="text-sm font-semibold text-slate-600 hover:text-primary transition">Partner us</a>
+                <div class="hidden md:flex flex-1 justify-center items-center space-x-8 lg:space-x-10">
+                    <a href="#hero" class="text-sm font-semibold text-slate-600 hover:text-primary transition font-sans">Home</a>
+                    <a href="#about" class="text-sm font-semibold text-slate-600 hover:text-primary transition font-sans">About</a>
+                    <a href="#platforms" class="text-sm font-semibold text-slate-600 hover:text-primary transition font-sans">Platforms</a>
+                    <a href="#quality" class="text-sm font-semibold text-slate-600 hover:text-primary transition font-sans">Quality</a>
+                    <a href="#testimonials" class="text-sm font-semibold text-slate-600 hover:text-primary transition font-sans">Testimonials</a>
+                    <a href="#contact" class="text-sm font-semibold text-slate-600 hover:text-primary transition font-sans">Partner us</a>
                 </div>
 
                 <div class="hidden md:flex w-40 justify-end">
-                    <a href="#contact" class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-blue-800 transition shadow-lg shadow-blue-500/30">
+                    <a href="#contact" class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-blue-800 transition shadow-lg shadow-blue-500/30 font-sans transform hover:scale-105 duration-200">
                         Contact Us
                     </a>
                 </div>
 
                 <div class="flex md:hidden items-center">
-                    <button id="mobile-menu-button" class="text-slate-800 hover:text-primary focus:outline-none p-2 rounded-md active:bg-slate-100 transition">
+                    <button id="mobile-menu-button" aria-label="Toggle menu" class="text-slate-800 hover:text-primary focus:outline-none p-2 rounded-md active:bg-slate-100 transition">
                         <i data-lucide="menu" class="h-8 w-8"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full left-0 top-20 shadow-xl z-50">
-            <div class="flex flex-col p-6 space-y-4 text-center">
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t-2 border-slate-100 absolute w-full left-0 top-20 shadow-xl z-50">
+            <div class="flex flex-col p-6 space-y-4 text-center font-sans">
                 <a href="#hero" class="text-lg font-semibold text-slate-700 hover:text-primary py-2 block">Home</a>
                 <a href="#about" class="text-lg font-semibold text-slate-700 hover:text-primary py-2 block">About</a>
                 <a href="#platforms" class="text-lg font-semibold text-slate-700 hover:text-primary py-2 block">Platforms</a>
                 <a href="#quality" class="text-lg font-semibold text-slate-700 hover:text-primary py-2 block">Quality</a>
                 <a href="#testimonials" class="text-lg font-semibold text-slate-700 hover:text-primary py-2 block">Testimonials</a>
-                <div class="pt-2">
+                <div class="pt-4 border-t border-slate-100">
                     <a href="#contact" class="inline-block bg-primary text-white px-8 py-3 rounded-full text-base font-semibold hover:bg-blue-800 transition shadow-md w-full max-w-xs">
                         Contact Us
                     </a>
@@ -125,45 +137,42 @@
     </nav>
 
     <section id="hero" class="hero-bg pt-48 pb-24 min-h-screen flex flex-col justify-center items-center text-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-black/10 pointer-events-none"></div>
 
         <div class="container mx-auto px-4 relative z-10 flex-grow flex flex-col justify-center" data-aos="fade-up" data-aos-duration="1000">
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-semibold text-white leading-tight tracking-tight mb-6 drop-shadow-lg">
-                The GEN-X Housing <br />
-                & Vacation Platform
-                <span class="inline-block align-top">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 md:w-16 md:h-16 text-yellow-400 animate-pulse">
-                        <path fill-rule="evenodd" d="M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813a3.75 3.75 0 002.576-2.576l.813-2.846A.75.75 0 019 4.5zM6.9 5.25a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H7.65a.75.75 0 01-.75-.75V5.25zm5.36 5.25a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008z" clip-rule="evenodd" />
-                    </svg>
-                </span>
+            <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight mb-6 drop-shadow-xl">
+                The GEN-X <br />
+                Housing & Vacation Platform
+                
             </h1>
-            <p class="text-lg md:text-xl text-blue-50 max-w-3xl mx-auto mb-12 font-light leading-relaxed px-4 drop-shadow-md">
+            
+            <p class="font-sans text-lg md:text-xl text-blue-50 max-w-3xl mx-auto mb-12 font-light leading-relaxed px-4 drop-shadow-md">
                 Fastest-growing housing network in Hyd & BLR offering Corporate Stays, Weekend Housing & Property Management.
             </p>
             
-            <div class="flex flex-col sm:flex-row justify-center gap-6 mb-24 px-4">
-                <a href="#wecation" class="bg-primary text-white border border-primary px-8 py-4 rounded-full font-semibold hover:bg-blue-800 transition transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 min-w-[200px]">
+            <div class="flex flex-col sm:flex-row justify-center gap-6 mb-24 px-4 font-sans">
+                <a href="#wecation" class="bg-primary text-white border-2 border-primary px-10 py-4 rounded-full font-semibold hover:bg-blue-800 transition transform hover:scale-105 shadow-xl flex items-center justify-center gap-2 min-w-[220px]">
                     Explore WECATION <i data-lucide="arrow-right" class="w-5 h-5"></i>
                 </a>
-                <a href="#wehousing" class="bg-white text-slate-900 px-8 py-4 rounded-full font-semibold hover:bg-slate-100 transition transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 min-w-[200px]">
+                <a href="#wehousing" class="bg-white text-slate-900 px-10 py-4 rounded-full font-semibold hover:bg-slate-100 transition transform hover:scale-105 shadow-xl flex items-center justify-center gap-2 min-w-[220px] border-2 border-white">
                     Explore WEHOUSING <i data-lucide="arrow-right" class="w-5 h-5"></i>
                 </a>
             </div>
 
             <div class="mt-auto">
-                <p class="text-blue-100 text-sm font-semibold mb-8 uppercase tracking-widest font-sans opacity-90">Featured In</p>
-                <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-8 px-4 max-w-7xl mx-auto">
-                    <a href="#" class="opacity-90 hover:opacity-100 transition hover:scale-105"><img src="./logos/dailyhunt logo.svg" alt="Dailyhunt" class="h-8 md:h-9 w-auto object-contain"></a>
-                    <a href="#" class="opacity-90 hover:opacity-100 transition hover:scale-105"><img src="./logos/Wow-Entrepreneurs-Logo-PNG.png" alt="WOW" class="h-7 md:h-8 w-auto object-contain"></a>
-                    <a href="#" class="opacity-90 hover:opacity-100 transition hover:scale-105"><img src="./logos/Entrepreneur-Saga-PNG-300x59.webp" alt="Entrepreneur" class="h-6 md:h-7 w-auto object-contain"></a>
-                    <a href="#" class="opacity-90 hover:opacity-100 transition hover:scale-105"><img src="./logos/Deccan-Business-PNG-300x104.png" alt="Deccan" class="h-8 md:h-10 w-auto object-contain"></a>
-                    <a href="#" class="opacity-90 hover:opacity-100 transition hover:scale-105"><img src="./logos/Business-Reporter-PNG-300x61.png" alt="Reporter" class="h-6 md:h-7 w-auto object-contain"></a>
-                    <a href="#" class="opacity-90 hover:opacity-100 transition hover:scale-105"><img src="./logos/1MoneyMania-PNG-2.webp" alt="Money" class="h-7 md:h-8 w-auto object-contain"></a>
-                    <a href="#" class="opacity-90 hover:opacity-100 transition hover:scale-105"><img src="./logos/RD-Times-Business-PNG-5.png" alt="RD" class="h-7 md:h-8 w-auto object-contain"></a>
-                    <a href="#" class="opacity-90 hover:opacity-100 transition hover:scale-105"><img src="./logos/cropped-Republic-News-India-Business-Logo-PNG-2.webp" alt="Republic" class="h-7 md:h-8 w-auto object-contain"></a>
-                    <a href="#" class="opacity-90 hover:opacity-100 transition hover:scale-105"><img src="./logos/cropped-The-Indian-Bulletin-Business-PNG.png" alt="Bulletin" class="h-7 md:h-8 w-auto object-contain"></a>
-                    <a href="#" class="opacity-90 hover:opacity-100 transition hover:scale-105"><img src="./logos/cropped-small-1.png" alt="NewsHead" class="h-7 md:h-8 w-auto object-contain"></a>
-                    <a href="#" class="opacity-90 hover:opacity-100 transition hover:scale-105"><img src="./logos/Indian-Scoops-Business-02-png-300x114.png" alt="Scoops" class="h-8 md:h-10 w-auto object-contain"></a>
+                <p class="text-blue-100 text-xs font-bold mb-8 uppercase tracking-[0.2em] font-sans opacity-90">Featured In</p>
+                <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-8 px-4 max-w-7xl mx-auto">
+                    <a href="#" class="hover:scale-105 transition"><img src="./logos/dailyhunt logo.svg" alt="Dailyhunt" class="h-8 md:h-10 w-auto object-contain"></a>
+                    <a href="#" class="hover:scale-105 transition"><img src="./logos/Wow-Entrepreneurs-Logo-PNG.png" alt="WOW" class="h-7 md:h-8 w-auto object-contain"></a>
+                    <a href="#" class="hover:scale-105 transition"><img src="./logos/Entrepreneur-Saga-PNG-300x59.webp" alt="Entrepreneur" class="h-6 md:h-7 w-auto object-contain"></a>
+                    <a href="#" class="hover:scale-105 transition"><img src="./logos/Deccan-Business-PNG-300x104.png" alt="Deccan" class="h-8 md:h-10 w-auto object-contain"></a>
+                    <a href="#" class="hover:scale-105 transition"><img src="./logos/Business-Reporter-PNG-300x61.png" alt="Reporter" class="h-6 md:h-7 w-auto object-contain"></a>
+                    <a href="#" class="hover:scale-105 transition"><img src="./logos/1MoneyMania-PNG-2.webp" alt="Money" class="h-7 md:h-8 w-auto object-contain"></a>
+                    <a href="#" class="hover:scale-105 transition"><img src="./logos/RD-Times-Business-PNG-5.png" alt="RD" class="h-7 md:h-8 w-auto object-contain"></a>
+                    <a href="#" class="hover:scale-105 transition"><img src="./logos/cropped-Republic-News-India-Business-Logo-PNG-2.webp" alt="Republic" class="h-7 md:h-8 w-auto object-contain"></a>
+                    <a href="#" class="hover:scale-105 transition"><img src="./logos/cropped-The-Indian-Bulletin-Business-PNG.png" alt="Bulletin" class="h-7 md:h-8 w-auto object-contain"></a>
+                    <a href="#" class="hover:scale-105 transition"><img src="./logos/cropped-small-1.png" alt="NewsHead" class="h-7 md:h-8 w-auto object-contain"></a>
+                    <a href="#" class="hover:scale-105 transition"><img src="./logos/Indian-Scoops-Business-02-png-300x114.png" alt="Scoops" class="h-8 md:h-10 w-auto object-contain"></a>
                 </div>
             </div>
         </div>
@@ -174,56 +183,56 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 
                 <div class="order-1 flex flex-col items-center lg:items-start text-center lg:text-left" data-aos="fade-right">
-                    <span class="bg-blue-50 text-primary text-xs font-semibold px-4 py-2 rounded-full tracking-wider mb-6 uppercase">About Weliving</span>
-                    <h2 class="text-4xl md:text-5xl font-semibold text-slate-900 mb-6">The Future of Living</h2>
-                    <p class="text-base md:text-lg text-slate-500 mb-6 leading-relaxed">
+                    <span class="bg-blue-50 text-primary text-xs font-bold px-4 py-2 rounded-full tracking-wider mb-6 uppercase font-sans">About Weliving</span>
+                    <h2 class="font-heading text-4xl md:text-5xl font-bold text-slate-900 mb-6">The Future of Living</h2>
+                    <p class="text-base md:text-lg text-slate-500 mb-6 leading-relaxed font-sans">
                         WELIVING is a pioneering tech, hospitality, and real-estate enterprise transforming how people travel, live, and invest in properties.
                     </p>
-                    <p class="text-base md:text-lg text-slate-500 mb-10 leading-relaxed">
+                    <p class="text-base md:text-lg text-slate-500 mb-10 leading-relaxed font-sans">
                         We combine cutting-edge technology with hospitality excellence to create seamless experiences across urban living. From AI-powered travel planning to verified real estate listings, we're building an integrated ecosystem.
                     </p>
 
-                    <div class="flex flex-col sm:flex-row gap-5 mb-10 w-full lg:w-auto">
-                        <div class="bg-blue-50 p-4 rounded-2xl flex items-center gap-4 w-full sm:w-auto min-w-[220px] border border-blue-100">
+                    <div class="flex flex-col sm:flex-row gap-5 mb-10 w-full lg:w-auto font-sans">
+                        <div class="bg-blue-50 p-4 rounded-2xl flex items-center gap-4 w-full sm:w-auto min-w-[220px] border-2 border-blue-100">
                             <div class="bg-white p-3 rounded-xl text-primary shadow-sm"><i data-lucide="plane" class="w-6 h-6"></i></div>
                             <div class="text-left">
-                                <p class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Travel Platform</p>
-                                <p class="font-semibold text-slate-800 text-sm">WECATION</p>
+                                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Travel Platform</p>
+                                <p class="font-bold text-slate-800 text-sm">WECATION</p>
                             </div>
                         </div>
-                        <div class="bg-blue-50 p-4 rounded-2xl flex items-center gap-4 w-full sm:w-auto min-w-[220px] border border-blue-100">
+                        <div class="bg-blue-50 p-4 rounded-2xl flex items-center gap-4 w-full sm:w-auto min-w-[220px] border-2 border-blue-100">
                             <div class="bg-white p-3 rounded-xl text-primary shadow-sm"><i data-lucide="building-2" class="w-6 h-6"></i></div>
                             <div class="text-left">
-                                <p class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Real Estate</p>
-                                <p class="font-semibold text-slate-800 text-sm">WEHOUSING</p>
+                                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Real Estate</p>
+                                <p class="font-bold text-slate-800 text-sm">WEHOUSING</p>
                             </div>
                         </div>
                     </div>
 
-                    <a href="#platforms" class="bg-primary text-white px-8 py-3.5 rounded-full font-semibold hover:bg-blue-800 transition shadow-lg shadow-blue-500/20">
+                    <a href="#whychooseus" class="bg-primary text-white px-8 py-3.5 rounded-full font-bold hover:bg-blue-800 transition shadow-lg shadow-blue-500/20 font-sans">
                         Learn More →
                     </a>
                 </div>
                 
                 <div class="relative order-2 w-full" data-aos="fade-left">
                     <div class="image-container rounded-4xl h-[400px] md:h-[500px] w-full shadow-lg mx-auto">
-                        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop" alt="Future Living Abstract" class="w-full h-full object-cover image-hover">
+                        <img src="backyard-water-contemporary-architecture-sky.jpg" loading="lazy" alt="Future Living Abstract" class="w-full h-full object-cover image-hover">
                     </div>
                     
-                    <div class="absolute -bottom-10 left-1/2 transform -translate-x-1/2 lg:left-0 lg:translate-x-[-10%] bg-white p-6 md:p-8 rounded-3xl border border-slate-100 flex items-center justify-between gap-8 w-[90%] md:w-auto min-w-[340px] z-10 card-hover">
+                    <div class="absolute -bottom-10 left-1/2 transform -translate-x-1/2 lg:left-0 lg:translate-x-[-10%] bg-white p-6 md:p-8 rounded-3xl border-2 border-slate-100 flex items-center justify-between gap-8 w-[90%] md:w-auto min-w-[340px] z-10 card-hover shadow-xl font-sans">
                         <div class="text-center">
-                            <div class="flex items-center justify-center text-3xl font-semibold text-primary mb-1"><span class="counter" data-target="150">0</span><span>+</span></div>
-                            <p class="text-xs text-slate-400 font-medium">Properties</p>
+                            <div class="flex items-center justify-center text-3xl font-bold text-primary mb-1"><span class="counter" data-target="150">0</span><span>+</span></div>
+                            <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Properties</p>
                         </div>
                         <div class="h-10 w-[1px] bg-slate-100"></div>
                         <div class="text-center">
-                            <div class="flex items-center justify-center text-3xl font-semibold text-primary mb-1"><span class="counter" data-target="2">0</span></div>
-                            <p class="text-xs text-slate-400 font-medium">Cities</p>
+                            <div class="flex items-center justify-center text-3xl font-bold text-primary mb-1"><span class="counter" data-target="2">0</span></div>
+                            <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Cities</p>
                         </div>
                         <div class="h-10 w-[1px] bg-slate-100"></div>
                         <div class="text-center">
-                            <div class="flex items-center justify-center text-3xl font-semibold text-primary mb-1"><span class="counter" data-target="95">0</span><span>%</span></div>
-                            <p class="text-xs text-slate-400 font-medium">Satisfaction</p>
+                            <div class="flex items-center justify-center text-3xl font-bold text-primary mb-1"><span class="counter" data-target="95">0</span><span>%</span></div>
+                            <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Satisfaction</p>
                         </div>
                     </div>
                 </div>
@@ -234,37 +243,37 @@
     <section id="platforms" class="py-24 bg-white mt-12 lg:mt-0 overflow-hidden">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <span class="bg-blue-50 text-primary text-xs font-semibold px-4 py-2 rounded-full tracking-wider uppercase mb-4 inline-block">OUR PLATFORMS</span>
-                <h2 class="text-4xl md:text-5xl font-semibold text-slate-900 mt-4 mb-4">Explore our Platforms</h2>
-                <p class="text-slate-500 text-lg">Two powerful platforms, one unified ecosystem</p>
+                <span class="bg-blue-50 text-primary text-xs font-bold px-4 py-2 rounded-full tracking-wider uppercase mb-4 inline-block font-sans">OUR PLATFORMS</span>
+                <h2 class="font-heading text-4xl md:text-5xl font-bold text-slate-900 mt-4 mb-4">Explore our Platforms</h2>
+                <p class="text-slate-500 text-lg font-sans">Two powerful platforms, one unified ecosystem</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
-                <div class="bg-white rounded-4xl border border-slate-100 card-hover group flex flex-col h-full overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white rounded-4xl border-2 border-slate-100 card-hover group flex flex-col h-full overflow-hidden" data-aos="fade-up" data-aos-delay="100">
                     <div class="h-64 relative overflow-hidden">
-                        <span class="absolute top-5 left-5 bg-primary/90 text-white text-[10px] font-semibold px-3 py-1.5 rounded-full z-10 tracking-wide uppercase backdrop-blur-sm">Travel</span>
-                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop" alt="Wecation" class="w-full h-full object-cover image-hover">
+                        <span class="absolute top-5 left-5 bg-primary/90 text-white text-[10px] font-bold px-3 py-1.5 rounded-full z-10 tracking-wide uppercase backdrop-blur-sm font-sans">Travel</span>
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop" loading="lazy" alt="Wecation" class="w-full h-full object-cover image-hover">
                         <div class="absolute bottom-5 right-5 bg-white p-2.5 rounded-full shadow-md z-10"><i data-lucide="plane" class="text-primary h-5 w-5"></i></div>
                     </div>
-                    <div class="p-8 md:p-10 text-center md:text-left flex-grow">
-                        <h3 class="text-2xl font-semibold text-slate-900 mb-3">WECATION</h3>
-                        <p class="text-sm text-slate-400 font-medium mb-5">India's First AI-Integrated Travel Platform</p>
+                    <div class="p-8 md:p-10 text-center md:text-left flex-grow font-sans">
+                        <h3 class="font-heading text-2xl font-bold text-slate-900 mb-3">WECATION</h3>
+                        <p class="text-sm text-slate-400 font-bold mb-5">India's First AI-Integrated Travel Platform</p>
                         <p class="text-slate-500 mb-8 text-sm leading-relaxed">Experience curated stays, AI-powered trip planning, and premium villas across India.</p>
-                        <a href="#wecation" class="text-primary font-semibold text-sm group-hover:underline flex items-center justify-center md:justify-start">Enroll now <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i></a>
+                        <a href="#contact" class="text-primary font-bold text-sm group-hover:underline flex items-center justify-center md:justify-start">Enroll now <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i></a>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-4xl border border-slate-100 card-hover group flex flex-col h-full overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white rounded-4xl border-2 border-slate-100 card-hover group flex flex-col h-full overflow-hidden" data-aos="fade-up" data-aos-delay="200">
                     <div class="h-64 relative overflow-hidden">
-                        <span class="absolute top-5 left-5 bg-slate-900/90 text-white text-[10px] font-semibold px-3 py-1.5 rounded-full z-10 tracking-wide uppercase backdrop-blur-sm">Real Estate</span>
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" alt="Wehousing" class="w-full h-full object-cover image-hover">
+                        <span class="absolute top-5 left-5 bg-slate-900/90 text-white text-[10px] font-bold px-3 py-1.5 rounded-full z-10 tracking-wide uppercase backdrop-blur-sm font-sans">Real Estate</span>
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" loading="lazy" alt="Wehousing" class="w-full h-full object-cover image-hover">
                         <div class="absolute bottom-5 right-5 bg-white p-2.5 rounded-full shadow-md z-10"><i data-lucide="home" class="text-primary h-5 w-5"></i></div>
                     </div>
-                    <div class="p-8 md:p-10 text-center md:text-left flex-grow">
-                        <h3 class="text-2xl font-semibold text-slate-900 mb-3">WEHOUSING</h3>
-                        <p class="text-sm text-slate-400 font-medium mb-5">Next-Gen Housing & Real Estate Platform</p>
+                    <div class="p-8 md:p-10 text-center md:text-left flex-grow font-sans">
+                        <h3 class="font-heading text-2xl font-bold text-slate-900 mb-3">WEHOUSING</h3>
+                        <p class="text-sm text-slate-400 font-bold mb-5">Next-Gen Housing & Real Estate Platform</p>
                         <p class="text-slate-500 mb-8 text-sm leading-relaxed">Buy, sell, or rent verified properties with AI-powered matching and transparent pricing.</p>
-                        <a href="#wehousing" class="text-primary font-semibold text-sm group-hover:underline flex items-center justify-center md:justify-start">Enroll now <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i></a>
+                        <a href="#contact" class="text-primary font-bold text-sm group-hover:underline flex items-center justify-center md:justify-start">Enroll now <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i></a>
                     </div>
                 </div>
             </div>
@@ -274,38 +283,38 @@
     <section class="py-24 bg-light overflow-hidden">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <span class="bg-white border border-slate-200 text-primary text-xs font-semibold px-5 py-2 rounded-full tracking-wider uppercase inline-block mb-4 shadow-sm">Why Choose Us</span>
-                <h2 class="text-4xl md:text-5xl font-semibold text-slate-900">Why choose <span class="text-primary">WELIVING?</span></h2>
+                <span class="bg-white border-2 border-slate-200 text-primary text-xs font-bold px-5 py-2 rounded-full tracking-wider uppercase inline-block mb-4 shadow-sm font-sans">Why Choose Us</span>
+                <h2 id='whychooseus' class="font-heading text-4xl md:text-5xl font-bold text-slate-900">Why choose <span class="text-primary">WELIVING?</span></h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                <div class="bg-white p-8 rounded-4xl card-hover border border-slate-100 text-left h-full" data-aos="fade-up">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto font-sans">
+                <div class="bg-white p-8 rounded-4xl card-hover border-2 border-slate-100 text-left h-full" data-aos="fade-up">
                     <div class="bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center mb-6 text-primary"><i data-lucide="brain-circuit" class="h-6 w-6"></i></div>
-                    <h3 class="text-xl font-semibold text-slate-900 mb-3">AI-driven Personalization</h3>
+                    <h3 class="font-heading text-xl font-bold text-slate-900 mb-3">AI-driven Personalization</h3>
                     <p class="text-slate-500 text-sm leading-relaxed">Smart recommendations tailored to your preferences and behavior patterns.</p>
                 </div>
-                <div class="bg-white p-8 rounded-4xl card-hover border border-slate-100 text-left h-full" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white p-8 rounded-4xl card-hover border-2 border-slate-100 text-left h-full" data-aos="fade-up" data-aos-delay="100">
                     <div class="bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center mb-6 text-primary"><i data-lucide="shield-check" class="h-6 w-6"></i></div>
-                    <h3 class="text-xl font-semibold text-slate-900 mb-3">Verified Listings</h3>
+                    <h3 class="font-heading text-xl font-bold text-slate-900 mb-3">Verified Listings</h3>
                     <p class="text-slate-500 text-sm leading-relaxed">Every property is thoroughly vetted and verified for quality assurance.</p>
                 </div>
-                <div class="bg-white p-8 rounded-4xl card-hover border border-slate-100 text-left h-full" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white p-8 rounded-4xl card-hover border-2 border-slate-100 text-left h-full" data-aos="fade-up" data-aos-delay="200">
                     <div class="bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center mb-6 text-primary"><i data-lucide="award" class="h-6 w-6"></i></div>
-                    <h3 class="text-xl font-semibold text-slate-900 mb-3">Hospitality-grade Standards</h3>
+                    <h3 class="font-heading text-xl font-bold text-slate-900 mb-3">Hospitality-grade Standards</h3>
                     <p class="text-slate-500 text-sm leading-relaxed">Premium quality in every stay with attention to detail.</p>
                 </div>
-                 <div class="bg-white p-8 rounded-4xl card-hover border border-slate-100 text-left h-full" data-aos="fade-up" data-aos-delay="300">
+                 <div class="bg-white p-8 rounded-4xl card-hover border-2 border-slate-100 text-left h-full" data-aos="fade-up" data-aos-delay="300">
                     <div class="bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center mb-6 text-primary"><i data-lucide="layers" class="h-6 w-6"></i></div>
-                    <h3 class="text-xl font-semibold text-slate-900 mb-3">Seamless Cross-platform</h3>
+                    <h3 class="font-heading text-xl font-bold text-slate-900 mb-3">Seamless Cross-platform</h3>
                     <p class="text-slate-500 text-sm leading-relaxed">Unified experience across travel and housing ecosystems.</p>
                 </div>
-                 <div class="bg-white p-8 rounded-4xl card-hover border border-slate-100 text-left h-full" data-aos="fade-up" data-aos-delay="400">
+                 <div class="bg-white p-8 rounded-4xl card-hover border-2 border-slate-100 text-left h-full" data-aos="fade-up" data-aos-delay="400">
                     <div class="bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center mb-6 text-primary"><i data-lucide="users" class="h-6 w-6"></i></div>
-                    <h3 class="text-xl font-semibold text-slate-900 mb-3">Tools for Hosts & Builders</h3>
+                    <h3 class="font-heading text-xl font-bold text-slate-900 mb-3">Tools for Hosts & Builders</h3>
                     <p class="text-slate-500 text-sm leading-relaxed">Powerful dashboard for comprehensive property management.</p>
                 </div>
-                 <div class="bg-white p-8 rounded-4xl card-hover border border-slate-100 text-left h-full" data-aos="fade-up" data-aos-delay="500">
+                 <div class="bg-white p-8 rounded-4xl card-hover border-2 border-slate-100 text-left h-full" data-aos="fade-up" data-aos-delay="500">
                     <div class="bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center mb-6 text-primary"><i data-lucide="eye" class="h-6 w-6"></i></div>
-                    <h3 class="text-xl font-semibold text-slate-900 mb-3">Transparent Ecosystem</h3>
+                    <h3 class="font-heading text-xl font-bold text-slate-900 mb-3">Transparent Ecosystem</h3>
                     <p class="text-slate-500 text-sm leading-relaxed">Clear pricing, honest reviews, and real-time market data.</p>
                 </div>
             </div>
@@ -314,18 +323,18 @@
 
     <section class="py-24 bg-light overflow-hidden">
         <div class="container mx-auto px-4 text-center mb-16" data-aos="fade-up">
-            <span class="bg-white border border-slate-200 text-primary text-xs font-semibold px-5 py-2 rounded-full tracking-wider uppercase inline-block mb-4 shadow-sm">Our Purpose</span>
-            <h2 class="text-4xl md:text-5xl font-semibold text-slate-900">Vision & Mission</h2>
+            <span class="bg-white border-2 border-slate-200 text-primary text-xs font-bold px-5 py-2 rounded-full tracking-wider uppercase inline-block mb-4 shadow-sm font-sans">Our Purpose</span>
+            <h2 class="font-heading text-4xl md:text-5xl font-bold text-slate-900">Vision & Mission</h2>
         </div>
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl">
-            <div class="bg-white p-12 rounded-4xl border border-slate-100 card-hover text-left h-full" data-aos="fade-right">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl font-sans">
+            <div class="bg-white p-12 rounded-4xl border-2 border-slate-100 card-hover text-left h-full" data-aos="fade-right">
                 <div class="bg-blue-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 text-primary"><i data-lucide="target" class="h-8 w-8"></i></div>
-                <h3 class="text-2xl font-semibold text-slate-900 mb-5">Our Vision</h3>
+                <h3 class="font-heading text-2xl font-bold text-slate-900 mb-5">Our Vision</h3>
                 <p class="text-slate-500 leading-relaxed text-base">To become the most trusted and innovative lifestyle ecosystem in India, revolutionizing how people travel, live, and invest in real estate through technology and hospitality excellence.</p>
             </div>
-            <div class="bg-white p-12 rounded-4xl border border-slate-100 card-hover text-left h-full" data-aos="fade-left">
+            <div class="bg-white p-12 rounded-4xl border-2 border-slate-100 card-hover text-left h-full" data-aos="fade-left">
                 <div class="bg-blue-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 text-primary"><i data-lucide="compass" class="h-8 w-8"></i></div>
-                <h3 class="text-2xl font-semibold text-slate-900 mb-5">Our Mission</h3>
+                <h3 class="font-heading text-2xl font-bold text-slate-900 mb-5">Our Mission</h3>
                 <p class="text-slate-500 leading-relaxed text-base">To deliver seamless, intelligent, and transparent solutions that empower hosts, travelers, and property seekers with cutting-edge technology, verified quality, and unmatched hospitality.</p>
             </div>
         </div>
@@ -334,61 +343,61 @@
     <section id="wecation" class="py-24 bg-white overflow-hidden">
         <div class="container mx-auto px-4">
             <div class="text-center mb-20" data-aos="fade-up">
-                <span class="bg-blue-50 text-primary text-xs font-semibold px-5 py-2 rounded-full tracking-wider uppercase inline-block mb-4">WECATION PLATFORM</span>
-                <h2 class="text-4xl md:text-5xl font-semibold text-slate-900">Travel Reimagined</h2>
-                <p class="text-slate-500 mt-4 text-lg">Discover India's first AI-integrated travel platform</p>
+                <span class="bg-blue-50 text-primary text-xs font-bold px-5 py-2 rounded-full tracking-wider uppercase inline-block mb-4 font-sans">WECATION PLATFORM</span>
+                <h2 class="font-heading text-4xl md:text-5xl font-bold text-slate-900">Travel Reimagined</h2>
+                <p class="text-slate-500 mt-4 text-lg font-sans">Discover India's first AI-integrated travel platform</p>
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24 max-w-7xl mx-auto">
-                <div class="space-y-5 flex flex-col justify-center" data-aos="fade-right">
-                    <div class="flex items-center p-5 bg-blue-50/50 rounded-2xl border border-blue-100 card-hover w-full">
-                        <div class="bg-white p-2.5 rounded-xl text-primary mr-6 border border-slate-100"><i data-lucide="cpu" class="h-6 w-6"></i></div>
+                <div class="space-y-5 flex flex-col justify-center font-sans" data-aos="fade-right">
+                    <div class="flex items-center p-5 bg-blue-50/50 rounded-2xl border-2 border-blue-100 card-hover w-full">
+                        <div class="bg-white p-2.5 rounded-xl text-primary mr-6 border-2 border-slate-100"><i data-lucide="cpu" class="h-6 w-6"></i></div>
                         <span class="font-medium text-slate-700 text-lg">AI-powered trip planning</span>
                     </div>
-                    <div class="flex items-center p-5 bg-blue-50/50 rounded-2xl border border-blue-100 card-hover w-full">
-                        <div class="bg-white p-2.5 rounded-xl text-primary mr-6 border border-slate-100"><i data-lucide="home" class="h-6 w-6"></i></div>
+                    <div class="flex items-center p-5 bg-blue-50/50 rounded-2xl border-2 border-blue-100 card-hover w-full">
+                        <div class="bg-white p-2.5 rounded-xl text-primary mr-6 border-2 border-slate-100"><i data-lucide="home" class="h-6 w-6"></i></div>
                         <span class="font-medium text-slate-700 text-lg">Premium villas & boutique hotels</span>
                     </div>
-                     <div class="flex items-center p-5 bg-blue-50/50 rounded-2xl border border-blue-100 card-hover w-full">
-                        <div class="bg-white p-2.5 rounded-xl text-primary mr-6 border border-slate-100"><i data-lucide="map-pin" class="h-6 w-6"></i></div>
+                     <div class="flex items-center p-5 bg-blue-50/50 rounded-2xl border-2 border-blue-100 card-hover w-full">
+                        <div class="bg-white p-2.5 rounded-xl text-primary mr-6 border-2 border-slate-100"><i data-lucide="map-pin" class="h-6 w-6"></i></div>
                         <span class="font-medium text-slate-700 text-lg">Spiritual & cultural stays</span>
                     </div>
-                    <div class="flex items-center p-5 bg-blue-50/50 rounded-2xl border border-blue-100 card-hover w-full">
-                        <div class="bg-white p-2.5 rounded-xl text-primary mr-6 border border-slate-100"><i data-lucide="users" class="h-6 w-6"></i></div>
+                    <div class="flex items-center p-5 bg-blue-50/50 rounded-2xl border-2 border-blue-100 card-hover w-full">
+                        <div class="bg-white p-2.5 rounded-xl text-primary mr-6 border-2 border-slate-100"><i data-lucide="users" class="h-6 w-6"></i></div>
                         <span class="font-medium text-slate-700 text-lg">Curated experiences</span>
                     </div>
                 </div>
                 <div class="card-hover w-full" data-aos="fade-left">
-                    <div class="image-container h-[500px] border border-slate-100 relative rounded-4xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover image-hover">
+                    <div class="image-container h-[500px] border-2 border-slate-100 relative rounded-4xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=2070&auto=format&fit=crop" loading="lazy" class="w-full h-full object-cover image-hover">
                         <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent p-10 text-white z-10 text-left">
-                            <span class="text-xs font-semibold opacity-90 uppercase tracking-wide mb-2 block">Premium Experience</span>
-                            <h3 class="text-3xl font-semibold">Curated Stays</h3>
+                            <span class="text-xs font-bold opacity-90 uppercase tracking-wide mb-2 block font-sans">Premium Experience</span>
+                            <h3 class="font-heading text-3xl font-bold">Curated Stays</h3>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="text-center max-w-5xl mx-auto" data-aos="fade-up">
-                <h3 class="text-3xl font-semibold text-slate-900 mb-16">Become a Host in 4 Simple Steps</h3>
+            <div class="text-center max-w-5xl mx-auto font-sans" data-aos="fade-up">
+                <h3 class="font-heading text-3xl font-bold text-slate-900 mb-16">Become a Host in 4 Simple Steps</h3>
                 <div class="flex flex-wrap justify-between items-center gap-8 relative px-4">
                     <div class="hidden md:block absolute top-8 left-10 right-10 h-0.5 bg-slate-100 -z-10"></div>
                     
                     <div class="flex flex-col items-center group flex-1 min-w-[150px]">
-                        <div class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-xl font-semibold mb-6 group-hover:scale-110 transition z-10 card-hover">1</div>
-                        <span class="font-medium text-slate-700 text-lg">Register Account</span>
+                        <div class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-xl font-semibold mb-6 group-hover:scale-110 transition z-10 card-hover shadow-lg">1</div>
+                        <span class="font-bold text-slate-700 text-lg">Register Account</span>
                     </div>
                     <div class="flex flex-col items-center group flex-1 min-w-[150px]">
-                        <div class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-xl font-semibold mb-6 group-hover:scale-110 transition z-10 card-hover">2</div>
-                        <span class="font-medium text-slate-700 text-lg">List Property</span>
+                        <div class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-xl font-semibold mb-6 group-hover:scale-110 transition z-10 card-hover shadow-lg">2</div>
+                        <span class="font-bold text-slate-700 text-lg">List Property</span>
                     </div>
                     <div class="flex flex-col items-center group flex-1 min-w-[150px]">
-                        <div class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-xl font-semibold mb-6 group-hover:scale-110 transition z-10 card-hover">3</div>
-                        <span class="font-medium text-slate-700 text-lg">Get Verified</span>
+                        <div class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-xl font-semibold mb-6 group-hover:scale-110 transition z-10 card-hover shadow-lg">3</div>
+                        <span class="font-bold text-slate-700 text-lg">Get Verified</span>
                     </div>
                     <div class="flex flex-col items-center group flex-1 min-w-[150px]">
-                        <div class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-xl font-semibold mb-6 group-hover:scale-110 transition z-10 card-hover">4</div>
-                        <span class="font-medium text-slate-700 text-lg">Start Earning</span>
+                        <div class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-xl font-semibold mb-6 group-hover:scale-110 transition z-10 card-hover shadow-lg">4</div>
+                        <span class="font-bold text-slate-700 text-lg">Start Earning</span>
                     </div>
                 </div>
             </div>
@@ -398,46 +407,46 @@
     <section id="wehousing" class="py-24 bg-light overflow-hidden">
         <div class="container mx-auto px-4">
              <div class="text-center mb-20" data-aos="fade-up">
-                <span class="bg-white border border-slate-200 text-primary text-xs font-semibold px-5 py-2 rounded-full tracking-wider uppercase inline-block mb-4">WEHOUSING PLATFORM</span>
-                <h2 class="text-4xl md:text-5xl font-semibold text-slate-900">Real Estate, Redefined</h2>
-                <p class="text-slate-500 mt-4 text-lg">Your complete housing ecosystem powered by AI</p>
+                <span class="bg-white border-2 border-slate-200 text-primary text-xs font-bold px-5 py-2 rounded-full tracking-wider uppercase inline-block mb-4 font-sans">WEHOUSING PLATFORM</span>
+                <h2 class="font-heading text-4xl md:text-5xl font-bold text-slate-900">Real Estate, Redefined</h2>
+                <p class="text-slate-500 mt-4 text-lg font-sans">Your complete housing ecosystem powered by AI</p>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
                  <div class="card-hover order-2 lg:order-1 w-full" data-aos="fade-right">
                     <div class="image-container h-[500px] shadow-2xl relative rounded-4xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover image-hover">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" loading="lazy" class="w-full h-full object-cover image-hover">
                         <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent p-10 text-white z-10 text-left">
-                            <span class="text-xs font-semibold opacity-90 uppercase tracking-wide mb-2 block">Verified Properties</span>
-                            <h3 class="text-3xl font-semibold">Dream Home</h3>
+                            <span class="text-xs font-bold opacity-90 uppercase tracking-wide mb-2 block font-sans">Verified Properties</span>
+                            <h3 class="font-heading text-3xl font-bold">Dream Home</h3>
                         </div>
                     </div>
                 </div>
-                <div class="space-y-6 order-1 lg:order-2 flex flex-col justify-center" data-aos="fade-left">
-                     <div class="bg-white p-6 rounded-2xl border border-slate-100 card-hover flex gap-6 w-full text-left items-center">
+                <div class="space-y-6 order-1 lg:order-2 flex flex-col justify-center font-sans" data-aos="fade-left">
+                     <div class="bg-white p-6 rounded-2xl border-2 border-slate-100 card-hover flex gap-6 w-full text-left items-center">
                         <div class="text-primary shrink-0"><i data-lucide="search" class="w-7 h-7"></i></div>
                         <div>
-                            <h4 class="font-semibold text-slate-900 text-lg">AI Property Matching</h4>
+                            <h4 class="font-bold text-slate-900 text-lg">AI Property Matching</h4>
                             <p class="text-sm text-slate-500 font-medium mt-1">Intelligent search for your perfect home based on needs.</p>
                         </div>
                      </div>
-                     <div class="bg-white p-6 rounded-2xl border border-slate-100 card-hover flex gap-6 w-full text-left items-center">
+                     <div class="bg-white p-6 rounded-2xl border-2 border-slate-100 card-hover flex gap-6 w-full text-left items-center">
                         <div class="text-primary shrink-0"><i data-lucide="shield-check" class="w-7 h-7"></i></div>
                         <div>
-                            <h4 class="font-semibold text-slate-900 text-lg">Verified Listings</h4>
+                            <h4 class="font-bold text-slate-900 text-lg">Verified Listings</h4>
                             <p class="text-sm text-slate-500 font-medium mt-1">Every property is thoroughly verified physically.</p>
                         </div>
                      </div>
-                     <div class="bg-white p-6 rounded-2xl border border-slate-100 card-hover flex gap-6 w-full text-left items-center">
+                     <div class="bg-white p-6 rounded-2xl border-2 border-slate-100 card-hover flex gap-6 w-full text-left items-center">
                         <div class="text-primary shrink-0"><i data-lucide="hard-hat" class="w-7 h-7"></i></div>
                         <div>
-                            <h4 class="font-semibold text-slate-900 text-lg">Builder Tools</h4>
+                            <h4 class="font-bold text-slate-900 text-lg">Builder Tools</h4>
                             <p class="text-sm text-slate-500 font-medium mt-1">Complete platform for developers to manage projects.</p>
                         </div>
                      </div>
-                     <div class="bg-white p-6 rounded-2xl border border-slate-100 card-hover flex gap-6 w-full text-left items-center">
+                     <div class="bg-white p-6 rounded-2xl border-2 border-slate-100 card-hover flex gap-6 w-full text-left items-center">
                         <div class="text-primary shrink-0"><i data-lucide="trending-up" class="w-7 h-7"></i></div>
                         <div>
-                            <h4 class="font-semibold text-slate-900 text-lg">Market Insights</h4>
+                            <h4 class="font-bold text-slate-900 text-lg">Market Insights</h4>
                             <p class="text-sm text-slate-500 font-medium mt-1">Real-time property analytics and pricing trends.</p>
                         </div>
                      </div>
@@ -449,30 +458,30 @@
     <section id="quality" class="py-24 bg-white overflow-hidden">
         <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl">
             <div class="text-center lg:text-left" data-aos="fade-right">
-                <span class="text-primary text-xs font-semibold uppercase tracking-wider mb-4 block">Quality Assurance</span>
-                <h2 class="text-4xl md:text-5xl font-semibold text-slate-900 mb-8">Hospitality Standards</h2>
-                <p class="text-slate-500 mb-12 text-lg font-normal leading-relaxed">
+                <span class="text-primary text-xs font-bold uppercase tracking-wider mb-4 block font-sans">Quality Assurance</span>
+                <h2 class="font-heading text-4xl md:text-5xl font-bold text-slate-900 mb-8">Hospitality Standards</h2>
+                <p class="text-slate-500 mb-12 text-lg font-normal leading-relaxed font-sans">
                     We don't just provide space; we curate experiences. Our strict quality assurance protocols ensure that every property meets our premium standards for comfort, cleanliness, and design.
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 font-sans">
                     <div class="text-left">
                         <div class="bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center text-primary mb-4"><i data-lucide="shield" class="w-6 h-6"></i></div>
-                        <h4 class="font-semibold text-slate-900 text-lg">Verified Properties</h4>
+                        <h4 class="font-bold text-slate-900 text-lg">Verified Properties</h4>
                         <p class="text-sm text-slate-500 mt-2 font-normal">Every listing is physically verified by our team.</p>
                     </div>
                      <div class="text-left">
                         <div class="bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center text-primary mb-4"><i data-lucide="sparkles" class="w-6 h-6"></i></div>
-                        <h4 class="font-semibold text-slate-900 text-lg">Premium Cleaning</h4>
+                        <h4 class="font-bold text-slate-900 text-lg">Premium Cleaning</h4>
                         <p class="text-sm text-slate-500 mt-2 font-normal">Professional housekeeping with hotel-grade standards.</p>
                     </div>
                      <div class="text-left">
                         <div class="bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center text-primary mb-4"><i data-lucide="clock" class="w-6 h-6"></i></div>
-                        <h4 class="font-semibold text-slate-900 text-lg">24/7 Concierge</h4>
+                        <h4 class="font-bold text-slate-900 text-lg">24/7 Concierge</h4>
                         <p class="text-sm text-slate-500 mt-2 font-normal">Round-the-clock support for all your needs.</p>
                     </div>
                      <div class="text-left">
                         <div class="bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center text-primary mb-4"><i data-lucide="heart" class="w-6 h-6"></i></div>
-                        <h4 class="font-semibold text-slate-900 text-lg">Curated Design</h4>
+                        <h4 class="font-bold text-slate-900 text-lg">Curated Design</h4>
                         <p class="text-sm text-slate-500 mt-2 font-normal">Interiors designed for mental clarity and comfort.</p>
                     </div>
                 </div>
@@ -481,20 +490,20 @@
             <div class="grid grid-cols-2 gap-6 h-full" data-aos="fade-left">
                 <div class="flex flex-col gap-6 pt-0">
                     <div class="h-80 rounded-4xl overflow-hidden shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-105 transition duration-700">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2070&auto=format&fit=crop" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition duration-700">
                     </div>
-                    <div class="h-48 bg-primary p-8 rounded-4xl border border-white/10 flex flex-col justify-center text-white card-hover">
-                        <span class="text-4xl font-semibold">1500+</span>
-                        <p class="text-sm font-medium mt-2 opacity-90">Quality Checks</p>
+                    <div class="h-48 bg-primary p-8 rounded-4xl border-2 border-white/10 flex flex-col justify-center text-white card-hover shadow-xl">
+                        <span class="text-4xl font-bold font-sans"><span class="counter" data-target="1500">0</span>+</span>
+                        <p class="text-sm font-bold mt-2 opacity-90 uppercase font-sans">Quality Checks</p>
                     </div>
                 </div>
                 <div class="flex flex-col gap-6 pt-0">
-                     <div class="h-48 bg-blue-50 p-8 rounded-4xl border border-blue-100 flex flex-col justify-center card-hover">
-                        <span class="text-4xl font-semibold text-slate-900">4.6/5</span>
-                        <p class="text-xs font-semibold text-slate-500 mt-2 uppercase">Guest Satisfaction</p>
+                     <div class="h-48 bg-blue-50 p-8 rounded-4xl border-2 border-blue-100 flex flex-col justify-center card-hover shadow-sm">
+                        <span class="text-4xl font-bold text-slate-900 font-sans">4.6/5</span>
+                        <p class="text-xs font-bold text-slate-500 mt-2 uppercase font-sans">Guest Satisfaction</p>
                     </div>
                     <div class="h-80 rounded-4xl overflow-hidden shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-105 transition duration-700">
+                        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070&auto=format&fit=crop" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition duration-700">
                     </div>
                 </div>
             </div>
@@ -503,58 +512,58 @@
 
     <section id="testimonials" class="py-24 bg-light overflow-hidden">
         <div class="container mx-auto px-4 text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl md:text-5xl font-semibold text-slate-900">Loved by Residents</h2>
-            <p class="text-slate-500 mt-4 text-lg font-normal max-w-2xl mx-auto">Join thousands of professionals who have found their perfect living and working environment.</p>
+            <h2 class="font-heading text-4xl md:text-5xl font-bold text-slate-900">Loved by Residents</h2>
+            <p class="text-slate-500 mt-4 text-lg font-normal max-w-2xl mx-auto font-sans">Join thousands of professionals who have found their perfect living and working environment.</p>
         </div>
         
         <div class="relative max-w-7xl mx-auto px-4 sm:px-12 lg:px-16" data-aos="fade-up">
-            <button class="absolute -left-2 lg:-left-12 top-1/2 -translate-y-1/2 bg-white w-10 h-10 lg:w-12 lg:h-12 rounded-full border border-slate-100 flex items-center justify-center text-slate-600 hover:text-primary hover:scale-110 transition z-20 card-hover">
+            <button class="absolute -left-2 lg:-left-12 top-1/2 -translate-y-1/2 bg-white w-10 h-10 lg:w-12 lg:h-12 rounded-full border-2 border-slate-100 flex items-center justify-center text-slate-600 hover:text-primary hover:scale-110 transition z-20 card-hover shadow-md">
                 <i data-lucide="arrow-left" class="w-5 h-5"></i>
             </button>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-10 rounded-4xl border border-slate-100 card-hover text-left flex flex-col justify-between h-full relative">
+                <div class="bg-white p-10 rounded-4xl border-2 border-slate-100 card-hover text-left flex flex-col justify-between h-full relative font-sans">
                     <div>
                         <div class="flex text-primary mb-6 space-x-1"><i data-lucide="star" class="fill-current w-5 h-5"></i><i data-lucide="star" class="fill-current w-5 h-5"></i><i data-lucide="star" class="fill-current w-5 h-5"></i><i data-lucide="star" class="fill-current w-5 h-5"></i><i data-lucide="star" class="fill-current w-5 h-5"></i></div>
                         <p class="text-slate-700 mb-10 leading-relaxed text-lg">"I had the time of my life at Weliving Stays! The view from the 27th floor was absolutely insane, and the flat was beautifully furnished and incredibly cozy..."</p>
                     </div>
                     <div class="flex justify-between items-end">
                         <div>
-                            <h4 class="font-semibold text-slate-900 text-base">Kareti satwik</h4>
-                            <p class="text-sm text-slate-400 font-normal mt-0.5">satwikk47@gmail.com</p>
+                            <h4 class="font-bold text-slate-900 text-base">Kareti satwik</h4>
+                            <p class="text-sm text-slate-400 font-medium mt-0.5">satwikk47@gmail.com</p>
                         </div>
                         <i data-lucide="quote" class="text-blue-100/50 w-12 h-12"></i>
                     </div>
                 </div>
-                 <div class="bg-white p-10 rounded-4xl border border-slate-100 card-hover text-left flex flex-col justify-between h-full relative">
+                 <div class="bg-white p-10 rounded-4xl border-2 border-slate-100 card-hover text-left flex flex-col justify-between h-full relative font-sans">
                     <div>
                         <div class="flex text-primary mb-6 space-x-1"><i data-lucide="star" class="fill-current w-5 h-5"></i><i data-lucide="star" class="fill-current w-5 h-5"></i><i data-lucide="star" class="fill-current w-5 h-5"></i><i data-lucide="star" class="fill-current w-5 h-5"></i><i data-lucide="star" class="fill-current w-5 h-5"></i></div>
                         <p class="text-slate-700 mb-10 leading-relaxed text-lg">"Dear Team Weliving, My stay at Weliving flats was very good and comfortable. The hosts were incredibly friendly and helpful, and we loved the overall experience."</p>
                     </div>
                     <div class="flex justify-between items-end">
                         <div>
-                            <h4 class="font-semibold text-slate-900 text-base">Abhinay Dulam</h4>
-                            <p class="text-sm text-slate-400 font-normal mt-0.5">abhinaydulam14@gmail.com</p>
+                            <h4 class="font-bold text-slate-900 text-base">Abhinay Dulam</h4>
+                            <p class="text-sm text-slate-400 font-medium mt-0.5">abhinaydulam14@gmail.com</p>
                         </div>
                         <i data-lucide="quote" class="text-blue-100/50 w-12 h-12"></i>
                     </div>
                 </div>
-                 <div class="bg-white p-10 rounded-4xl border border-slate-100 card-hover text-left flex flex-col justify-between h-full relative">
+                 <div class="bg-white p-10 rounded-4xl border-2 border-slate-100 card-hover text-left flex flex-col justify-between h-full relative font-sans">
                     <div>
                         <div class="flex text-primary mb-6 space-x-1"><i data-lucide="star" class="fill-current w-5 h-5"></i><i data-lucide="star" class="fill-current w-5 h-5"></i><i data-lucide="star" class="fill-current w-5 h-5"></i><i data-lucide="star" class="fill-current w-5 h-5"></i><i data-lucide="star" class="fill-current w-5 h-5"></i></div>
                         <p class="text-slate-700 mb-10 leading-relaxed text-lg">"I had a wonderful and comfortable stay at the Weliving flats. The hosts were incredibly friendly and accommodating, making our experience truly enjoyable."</p>
                     </div>
                     <div class="flex justify-between items-end">
                         <div>
-                            <h4 class="font-semibold text-slate-900 text-base">Rohan Sharma</h4>
-                            <p class="text-sm text-slate-400 font-normal mt-0.5">rohansharma68@gmail.com</p>
+                            <h4 class="font-bold text-slate-900 text-base">Rohan Sharma</h4>
+                            <p class="text-sm text-slate-400 font-medium mt-0.5">rohansharma68@gmail.com</p>
                         </div>
                         <i data-lucide="quote" class="text-blue-100/50 w-12 h-12"></i>
                     </div>
                 </div>
             </div>
 
-            <button class="absolute -right-2 lg:-right-12 top-1/2 -translate-y-1/2 bg-white w-10 h-10 lg:w-12 lg:h-12 rounded-full border border-slate-100 flex items-center justify-center text-slate-600 hover:text-primary hover:scale-110 transition z-20 card-hover">
+            <button class="absolute -right-2 lg:-right-12 top-1/2 -translate-y-1/2 bg-white w-10 h-10 lg:w-12 lg:h-12 rounded-full border-2 border-slate-100 flex items-center justify-center text-slate-600 hover:text-primary hover:scale-110 transition z-20 card-hover shadow-md">
                 <i data-lucide="arrow-right" class="w-5 h-5"></i>
             </button>
         </div>
@@ -563,49 +572,49 @@
     <section class="py-24 bg-light overflow-hidden">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-semibold text-slate-900 mb-3">Partner With Us</h2>
-                <p class="text-slate-500 font-normal text-lg">Join the fastest-growing housing and travel ecosystem</p>
+                <h2 class="font-heading text-4xl md:text-5xl font-bold text-slate-900 mb-3">Partner With Us</h2>
+                <p class="text-slate-500 font-normal text-lg font-sans">Join the fastest-growing housing and travel ecosystem</p>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20 max-w-7xl mx-auto">
-                 <div class="p-10 bg-white rounded-4xl text-left card-hover group cursor-pointer border border-slate-100 h-full flex flex-col justify-between min-h-[300px]" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20 max-w-7xl mx-auto font-sans">
+                 <div class="p-10 bg-white rounded-4xl text-left card-hover group cursor-pointer border-2 border-slate-100 h-full flex flex-col justify-between min-h-[300px]" data-aos="fade-up" data-aos-delay="100">
                     <div>
                         <div class="w-14 h-14 bg-blue-50 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition"><i data-lucide="plane" class="w-7 h-7"></i></div>
-                        <h3 class="font-semibold text-slate-900 text-xl">WECATION Hosts</h3>
+                        <h3 class="font-bold text-slate-900 text-xl">WECATION Hosts</h3>
                         <p class="text-sm text-slate-500 font-normal mt-3 mb-8">List your villa, boutique hotel, or serviced apartment</p>
                     </div>
-                    <a href="#" class="text-primary text-sm font-semibold flex items-center hover:underline">Apply Now <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+                    <a href="#contact" class="text-primary text-sm font-bold flex items-center hover:underline">Apply Now <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
                 </div>
-                 <div class="p-10 bg-white rounded-4xl text-left card-hover group cursor-pointer border border-slate-100 h-full flex flex-col justify-between min-h-[300px]" data-aos="fade-up" data-aos-delay="200">
+                 <div class="p-10 bg-white rounded-4xl text-left card-hover group cursor-pointer border-2 border-slate-100 h-full flex flex-col justify-between min-h-[300px]" data-aos="fade-up" data-aos-delay="200">
                     <div>
                         <div class="w-14 h-14 bg-blue-50 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition"><i data-lucide="briefcase" class="w-7 h-7"></i></div>
-                        <h3 class="font-semibold text-slate-900 text-xl">Corporate Stays</h3>
+                        <h3 class="font-bold text-slate-900 text-xl">Corporate Stays</h3>
                         <p class="text-sm text-slate-500 font-normal mt-3 mb-8">Partner for employee housing and relocations</p>
                     </div>
-                    <a href="#" class="text-primary text-sm font-semibold flex items-center hover:underline">Apply Now <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+                    <a href="#contact" class="text-primary text-sm font-bold flex items-center hover:underline">Apply Now <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
                 </div>
-                 <div class="p-10 bg-white rounded-4xl text-left card-hover group cursor-pointer border border-slate-100 h-full flex flex-col justify-between min-h-[300px]" data-aos="fade-up" data-aos-delay="300">
+                 <div class="p-10 bg-white rounded-4xl text-left card-hover group cursor-pointer border-2 border-slate-100 h-full flex flex-col justify-between min-h-[300px]" data-aos="fade-up" data-aos-delay="300">
                     <div>
                         <div class="w-14 h-14 bg-blue-50 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition"><i data-lucide="home" class="w-7 h-7"></i></div>
-                        <h3 class="font-semibold text-slate-900 text-xl">WEHOUSING Realtors</h3>
+                        <h3 class="font-bold text-slate-900 text-xl">WEHOUSING Realtors</h3>
                         <p class="text-sm text-slate-500 font-normal mt-3 mb-8">Join our verified network of property professionals</p>
                     </div>
-                    <a href="#" class="text-primary text-sm font-semibold flex items-center hover:underline">Apply Now <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+                    <a href="#contact" class="text-primary text-sm font-bold flex items-center hover:underline">Apply Now <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
                 </div>
-                 <div class="p-10 bg-white rounded-4xl text-left card-hover group cursor-pointer border border-slate-100 h-full flex flex-col justify-between min-h-[300px]" data-aos="fade-up" data-aos-delay="400">
+                 <div class="p-10 bg-white rounded-4xl text-left card-hover group cursor-pointer border-2 border-slate-100 h-full flex flex-col justify-between min-h-[300px]" data-aos="fade-up" data-aos-delay="400">
                     <div>
                         <div class="w-14 h-14 bg-blue-50 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition"><i data-lucide="building-2" class="w-7 h-7"></i></div>
-                        <h3 class="font-semibold text-slate-900 text-xl">Builders & Developers</h3>
+                        <h3 class="font-bold text-slate-900 text-xl">Builders & Developers</h3>
                         <p class="text-sm text-slate-500 font-normal mt-3 mb-8">Showcase your projects to qualified buyers</p>
                     </div>
-                    <a href="#" class="text-primary text-sm font-semibold flex items-center hover:underline">Apply Now <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+                    <a href="#contact" class="text-primary text-sm font-bold flex items-center hover:underline">Apply Now <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
                 </div>
             </div>
 
-            <div class="bg-primary rounded-4xl p-16 text-center text-white border border-white/10 card-hover max-w-7xl mx-auto" data-aos="zoom-in">
-                <h2 class="text-3xl md:text-4xl font-semibold mb-4">Ready to Grow Together?</h2>
-                <p class="text-blue-100 mb-8 font-normal text-lg">Join thousands of partners already benefiting from WELIVING</p>
-                <button class="bg-white text-primary px-10 py-4 rounded-full font-semibold text-lg hover:bg-blue-50 transition transform hover:scale-105 shadow-md mx-auto block">Get Started Today</button>
+            <div class="bg-primary rounded-4xl p-16 text-center text-white border-2 border-white/10 card-hover max-w-7xl mx-auto shadow-2xl" data-aos="zoom-in">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Ready to Grow Together?</h2>
+                <p class="text-blue-100 mb-8 font-normal text-lg font-sans">Join thousands of partners already benefiting from WELIVING</p>
+                <button class="bg-white text-primary px-10 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition transform hover:scale-105 shadow-md mx-auto block font-sans">Get Started Today</button>
             </div>
         </div>
     </section>
@@ -613,61 +622,61 @@
     <section id="contact" class="py-24 bg-white overflow-hidden">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
-                <span class="bg-blue-50 text-primary text-xs font-semibold px-4 py-1.5 rounded-full tracking-wide uppercase inline-block mb-2">CONTACT US</span>
-                <h2 class="text-4xl md:text-5xl font-semibold text-slate-900 mt-2 mb-2">Get in Touch</h2>
-                <p class="text-slate-500 font-normal">Have questions? We'd love to hear from you.</p>
+                <span class="bg-blue-50 text-primary text-xs font-bold px-4 py-1.5 rounded-full tracking-wide uppercase inline-block mb-2 font-sans">CONTACT US</span>
+                <h2 class="font-heading text-4xl md:text-5xl font-bold text-slate-900 mt-2 mb-2">Get in Touch</h2>
+                <p class="text-slate-500 font-normal font-sans">Have questions? We'd love to hear from you.</p>
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto h-full items-stretch">
                 <div class="flex flex-col h-full space-y-8" data-aos="fade-right">
-                    <div class="bg-primary p-12 rounded-4xl text-white card-hover text-left flex flex-col justify-center h-full border border-white/10 min-h-[300px]">
-                        <h3 class="text-3xl font-semibold mb-4">Join Our Community</h3>
+                    <div class="bg-primary p-12 rounded-4xl text-white card-hover text-left flex flex-col justify-center h-full border-2 border-white/10 min-h-[300px] shadow-xl font-sans">
+                        <h3 class="font-heading text-3xl font-bold mb-4">Join Our Community</h3>
                         <p class="text-blue-100 text-base mb-8 leading-relaxed">Be part of the WELIVING ecosystem and experience the future of housing and travel.</p>
-                        <button class="bg-white text-primary px-8 py-3.5 rounded-xl font-semibold text-sm hover:bg-blue-50 transition w-fit">Learn More</button>
+                        <button class="bg-white text-primary px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-blue-50 transition w-fit">Learn More</button>
                     </div>
 
-                    <a href="mailto:welivingltd@gmail.com" class="bg-blue-50 p-6 rounded-2xl flex items-center gap-6 card-hover text-left border border-blue-100 cursor-pointer block group">
-                        <div class="bg-white p-3.5 rounded-xl text-primary border border-slate-100 shrink-0 group-hover:bg-primary group-hover:text-white transition"><i data-lucide="mail" class="w-6 h-6"></i></div>
+                    <a href="mailto:welivingltd@gmail.com" class="bg-blue-50 p-6 rounded-2xl flex items-center gap-6 card-hover text-left border-2 border-blue-100 cursor-pointer block group font-sans">
+                        <div class="bg-white p-3.5 rounded-xl text-primary border-2 border-slate-100 shrink-0 group-hover:bg-primary group-hover:text-white transition"><i data-lucide="mail" class="w-6 h-6"></i></div>
                         <div>
-                            <p class="text-xs text-slate-500 font-semibold uppercase tracking-wide">Email</p>
-                            <p class="text-lg text-slate-900 font-semibold group-hover:text-primary transition">welivingltd@gmail.com</p>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wide">Email</p>
+                            <p class="text-lg text-slate-900 font-bold group-hover:text-primary transition">welivingltd@gmail.com</p>
                         </div>
                     </a>
                     
-                    <a href="https://wa.me/919493927132" target="_blank" class="bg-blue-50 p-6 rounded-2xl flex items-center gap-6 card-hover text-left border border-blue-100 cursor-pointer block group">
-                        <div class="bg-white p-3.5 rounded-xl text-primary border border-slate-100 shrink-0 group-hover:bg-primary group-hover:text-white transition"><i data-lucide="phone" class="w-6 h-6"></i></div>
+                    <a href="https://wa.me/919493927132" target="_blank" class="bg-blue-50 p-6 rounded-2xl flex items-center gap-6 card-hover text-left border-2 border-blue-100 cursor-pointer block group font-sans">
+                        <div class="bg-white p-3.5 rounded-xl text-primary border-2 border-slate-100 shrink-0 group-hover:bg-primary group-hover:text-white transition"><i data-lucide="phone" class="w-6 h-6"></i></div>
                         <div>
-                            <p class="text-xs text-slate-500 font-semibold uppercase tracking-wide">Phone</p>
-                            <p class="text-lg text-slate-900 font-semibold group-hover:text-primary transition">+91 9493927132</p>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wide">Phone</p>
+                            <p class="text-lg text-slate-900 font-bold group-hover:text-primary transition">+91 9493927132</p>
                         </div>
                     </a>
 
-                     <a href="https://share.google/sAENDrH6yds3lVIV9" target="_blank" class="bg-blue-50 p-6 rounded-2xl flex items-center gap-6 card-hover text-left border border-blue-100 group cursor-pointer block">
-                        <div class="bg-white p-3.5 rounded-xl text-primary border border-slate-100 shrink-0 group-hover:bg-primary group-hover:text-white transition"><i data-lucide="map-pin" class="w-6 h-6"></i></div>
+                     <a href="https://share.google/sAENDrH6yds3lVIV9" target="_blank" class="bg-blue-50 p-6 rounded-2xl flex items-center gap-6 card-hover text-left border-2 border-blue-100 group cursor-pointer block font-sans">
+                        <div class="bg-white p-3.5 rounded-xl text-primary border-2 border-slate-100 shrink-0 group-hover:bg-primary group-hover:text-white transition"><i data-lucide="map-pin" class="w-6 h-6"></i></div>
                         <div>
-                            <p class="text-xs text-slate-500 font-semibold uppercase tracking-wide">Location</p>
-                            <p class="text-lg text-slate-900 font-semibold group-hover:text-primary transition">Hyderabad & Bangalore</p>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wide">Location</p>
+                            <p class="text-lg text-slate-900 font-bold group-hover:text-primary transition">Hyderabad & Bangalore</p>
                         </div>
                     </a>
                 </div>
 
                 <div class="h-full" data-aos="fade-left">
-                    <div class="bg-white p-0 rounded-3xl h-full flex flex-col justify-between">
+                    <div class="bg-white p-0 rounded-3xl h-full flex flex-col justify-between font-sans">
                         <form class="space-y-6 h-full flex flex-col justify-between">
                             <div>
-                                <label class="block text-sm font-semibold text-slate-700 mb-2">Name</label>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Name</label>
                                 <input type="text" class="w-full rounded-xl border-none bg-blue-50 p-4 text-sm font-medium focus:ring-2 focus:ring-primary outline-none text-slate-800 placeholder-slate-400" placeholder="Your name">
                             </div>
                              <div>
-                                <label class="block text-sm font-semibold text-slate-700 mb-2">Email</label>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Email</label>
                                 <input type="email" class="w-full rounded-xl border-none bg-blue-50 p-4 text-sm font-medium focus:ring-2 focus:ring-primary outline-none text-slate-800 placeholder-slate-400" placeholder="your@email.com">
                             </div>
                              <div>
-                                <label class="block text-sm font-semibold text-slate-700 mb-2">Phone</label>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Phone</label>
                                 <input type="tel" class="w-full rounded-xl border-none bg-blue-50 p-4 text-sm font-medium focus:ring-2 focus:ring-primary outline-none text-slate-800 placeholder-slate-400" placeholder="+91 XXXXX XXXXX">
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold text-slate-700 mb-2">Category</label>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Category</label>
                                 <div class="relative">
                                     <select class="w-full rounded-xl border-none bg-blue-50 p-4 text-sm font-medium focus:ring-2 focus:ring-primary outline-none text-slate-800 appearance-none">
                                         <option>General Inquiry</option>
@@ -680,10 +689,10 @@
                                 </div>
                             </div>
                             <div class="flex-grow">
-                                <label class="block text-sm font-semibold text-slate-700 mb-2">Message</label>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Message</label>
                                 <textarea class="w-full h-32 rounded-xl border-none bg-blue-50 p-4 text-sm font-medium focus:ring-2 focus:ring-primary outline-none text-slate-800 placeholder-slate-400 resize-none" placeholder="Tell us how we can help..."></textarea>
                             </div>
-                            <button class="w-full bg-primary text-white py-4 rounded-xl font-semibold hover:bg-blue-800 transition shadow-lg shadow-blue-500/30 flex justify-center items-center gap-2 text-lg mt-8">
+                            <button class="w-full bg-primary text-white py-4 rounded-xl font-bold hover:bg-blue-800 transition shadow-lg shadow-blue-500/30 flex justify-center items-center gap-2 text-lg mt-8">
                                 Send Message <i data-lucide="send" class="w-5 h-5"></i>
                             </button>
                         </form>
@@ -698,8 +707,8 @@
             <div class="flex items-center justify-center gap-2 mb-6">
                 <img src="./logo.png" alt="WELIVING Logo" class="h-10 w-auto object-contain brightness-0 invert">
             </div>
-            <p class="text-sm mb-8 font-normal text-slate-500">The Gen-X Housing, Travel, and Real-Estate Ecosystem.</p>
-            <div class="flex flex-wrap justify-center gap-8 mb-8 text-sm font-semibold text-slate-300">
+            <p class="text-sm mb-8 font-normal text-slate-500 font-sans">The Gen-X Housing, Travel, and Real-Estate Ecosystem.</p>
+            <div class="flex flex-wrap justify-center gap-8 mb-8 text-sm font-semibold text-slate-300 font-sans">
                 <a href="#hero" class="hover:text-white transition">Home</a>
                 <a href="#about" class="hover:text-white transition">About</a>
                 <a href="#platforms" class="hover:text-white transition">Platforms</a>
@@ -708,11 +717,11 @@
                 <a href="#contact" class="hover:text-white transition">Contact</a>
             </div>
             <div class="flex justify-center gap-4 mb-12">
-                <a href="#" class="p-2.5 bg-slate-800 rounded-full hover:bg-primary hover:text-white transition"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-                <a href="#" class="p-2.5 bg-slate-800 rounded-full hover:bg-primary hover:text-white transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                <a href="#" class="p-2.5 bg-slate-800 rounded-full hover:bg-primary hover:text-white transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                <a href="https://share.google/6CPldrauOIS2TaFQv" class="p-2.5 bg-slate-800 rounded-full hover:bg-primary hover:text-white transition"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                <a href="https://www.instagram.com/weliving.in?igsh=Zmg1MGc1em4xdjY4" class="p-2.5 bg-slate-800 rounded-full hover:bg-primary hover:text-white transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="https://www.linkedin.com/company/welivinghousingspacespvtltd/" class="p-2.5 bg-slate-800 rounded-full hover:bg-primary hover:text-white transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
             </div>
-            <div class="border-t border-slate-800 pt-8 mt-12 flex flex-col md:flex-row justify-between items-center text-xs font-medium text-slate-500">
+            <div class="border-t border-slate-800 pt-8 mt-12 flex flex-col md:flex-row justify-between items-center text-xs font-medium text-slate-500 font-sans">
                 <p>&copy; 2026 WELIVING. All rights reserved.</p>
                 <div class="flex gap-6 mt-4 md:mt-0">
                     <a href="#" class="hover:text-white transition">Privacy</a>
@@ -733,6 +742,7 @@
             duration: 800,
         });
 
+        // Toggle Mobile Menu
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -740,38 +750,42 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Counter Animation
-        const counters = document.querySelectorAll('.counter');
-        const speed = 200; 
-        const animateCounters = () => {
-            counters.forEach(counter => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    const inc = target / speed;
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + inc);
-                        setTimeout(updateCount, 20);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                updateCount();
+        // Close Menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
             });
-        }
+        });
 
-        let options = { threshold: 0.5 }
-        let observer = new IntersectionObserver((entries) => {
+        // Fixed: Counter Animation (Observer targets specific elements, not sections)
+        const observerOptions = { threshold: 0.5 };
+        const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    const speed = 200;
+                    
+                    const updateCount = () => {
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 20);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
+                    observer.unobserve(counter);
                 }
             });
-        }, options);
+        }, observerOptions);
 
-        const aboutSection = document.querySelector('#about');
-        if(aboutSection) { observer.observe(aboutSection); }
+        // Target all counters independently
+        document.querySelectorAll('.counter').forEach(counter => {
+            observer.observe(counter);
+        });
     </script>
 </body>
 </html>
