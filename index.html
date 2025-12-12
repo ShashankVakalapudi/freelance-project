@@ -32,12 +32,16 @@
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
         /* --- UTILITIES --- */
-        .card-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08); }
+        /* Only apply hover effects on devices that support hovering (mouse) to prevent sticky hover on mobile clicks */
+        @media (hover: hover) {
+            .card-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+            .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08); }
+            
+            .image-container:hover .image-hover { transform: scale(1.03); }
+        }
         
         .image-container { overflow: hidden; }
         .image-hover { transition: transform 0.7s ease; }
-        .image-container:hover .image-hover { transform: scale(1.03); }
 
         /* Hero Background */
         .hero-bg {
@@ -196,20 +200,20 @@
                     <div class="image-container rounded-4xl h-[400px] md:h-[500px] w-full shadow-lg mx-auto">
                         <img src="backyard-water-contemporary-architecture-sky.jpg" loading="lazy" width="600" height="500" alt="Future Living Abstract" class="w-full h-full object-cover image-hover">
                     </div>
-                    <div class="absolute -bottom-10 left-1/2 transform -translate-x-1/2 lg:left-0 lg:translate-x-[-10%] bg-white p-6 md:p-8 rounded-3xl border-2 border-slate-100 flex items-center justify-between gap-8 w-[90%] md:w-auto min-w-[340px] z-10 card-hover shadow-xl">
+                    <div class="absolute -bottom-10 left-1/2 transform -translate-x-1/2 lg:left-0 lg:translate-x-[-10%] bg-white p-4 md:p-8 rounded-3xl border-2 border-slate-100 flex items-center justify-between gap-2 md:gap-8 w-[95%] md:w-auto min-w-0 md:min-w-[340px] z-10 shadow-xl">
                         <div class="text-center">
-                            <div class="flex items-center justify-center text-3xl font-bold text-primary mb-1 font-heading"><span class="counter" data-target="150">0</span><span>+</span></div>
-                            <p class="text-xs text-slate-400 font-bold uppercase tracking-wider font-sans">Properties</p>
+                            <div class="flex items-center justify-center text-2xl md:text-3xl font-bold text-primary mb-1 font-heading"><span class="counter" data-target="150">0</span><span>+</span></div>
+                            <p class="text-[10px] md:text-xs text-slate-400 font-bold uppercase tracking-wider font-sans">Properties</p>
                         </div>
-                        <div class="h-10 w-[1px] bg-slate-100"></div>
+                        <div class="h-8 md:h-10 w-[1px] bg-slate-100"></div>
                         <div class="text-center">
-                            <div class="flex items-center justify-center text-3xl font-bold text-primary mb-1 font-heading"><span class="counter" data-target="2">0</span></div>
-                            <p class="text-xs text-slate-400 font-bold uppercase tracking-wider font-sans">Cities</p>
+                            <div class="flex items-center justify-center text-2xl md:text-3xl font-bold text-primary mb-1 font-heading"><span class="counter" data-target="2">0</span></div>
+                            <p class="text-[10px] md:text-xs text-slate-400 font-bold uppercase tracking-wider font-sans">Cities</p>
                         </div>
-                        <div class="h-10 w-[1px] bg-slate-100"></div>
+                        <div class="h-8 md:h-10 w-[1px] bg-slate-100"></div>
                         <div class="text-center">
-                            <div class="flex items-center justify-center text-3xl font-bold text-primary mb-1 font-heading"><span class="counter" data-target="95">0</span><span>%</span></div>
-                            <p class="text-xs text-slate-400 font-bold uppercase tracking-wider font-sans">Satisfaction</p>
+                            <div class="flex items-center justify-center text-2xl md:text-3xl font-bold text-primary mb-1 font-heading"><span class="counter" data-target="95">0</span><span>%</span></div>
+                            <p class="text-[10px] md:text-xs text-slate-400 font-bold uppercase tracking-wider font-sans">Satisfaction</p>
                         </div>
                     </div>
                 </div>
@@ -390,14 +394,14 @@
         </div>
         
         <div class="relative max-w-7xl mx-auto px-4 sm:px-12 lg:px-16" data-aos="fade-up">
-            <button id="prev-testimonial" aria-label="Previous Testimonial" class="absolute -left-2 lg:-left-12 top-1/2 -translate-y-1/2 bg-white w-10 h-10 lg:w-12 lg:h-12 rounded-full border-2 border-slate-100 flex items-center justify-center text-slate-600 hover:text-primary hover:scale-110 transition z-20 card-hover shadow-md">
+            <button id="prev-testimonial" aria-label="Previous Testimonial" class="hidden md:flex absolute -left-2 lg:-left-12 top-1/2 -translate-y-1/2 bg-white w-10 h-10 lg:w-12 lg:h-12 rounded-full border-2 border-slate-100 items-center justify-center text-slate-600 hover:text-primary hover:scale-110 transition z-20 card-hover shadow-md">
                 <i data-lucide="arrow-left" class="w-5 h-5"></i>
             </button>
 
             <div id="testimonials-container" class="flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory pb-8 pt-4">
                 
-                <div class="bg-white p-10 rounded-4xl border-2 border-slate-100 card-hover text-left flex flex-col justify-between h-full min-h-[400px] relative font-sans flex-none w-full md:w-[calc(33.333%-1.34rem)] snap-center">
-                    <div>
+                <div class="bg-white p-6 md:p-10 rounded-3xl md:rounded-4xl border-2 border-slate-100 card-hover text-left flex flex-col justify-between h-full min-h-[350px] md:min-h-[400px] relative font-sans flex-none w-full md:w-[calc(33.333%-1.34rem)] snap-center overflow-hidden">
+                    <div class="w-full min-w-0">
                         <div class="flex text-primary mb-6 space-x-1">
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
@@ -405,38 +409,38 @@
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                         </div>
-                        <p class="text-slate-700 mb-10 leading-relaxed text-lg">"I had the time of my life at Weliving Stays! The view from the 27th floor was absolutely insane, and the flat was beautifully furnished and incredibly cozy..."</p>
+                        <p class="text-slate-700 mb-10 leading-relaxed text-base md:text-lg break-words w-full">"I had the time of my life at Weliving Stays! The view from the 27th floor was absolutely insane, and the flat was beautifully furnished and incredibly cozy..."</p>
                     </div>
-                    <div class="flex justify-between items-end">
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-base">Kareti satwik</h4>
-                            <p class="text-sm text-slate-400 font-medium mt-0.5">satwikk47@gmail.com</p>
+                    <div class="flex justify-between items-end w-full min-w-0">
+                        <div class="min-w-0 flex-1 pr-4">
+                            <h4 class="font-bold text-slate-900 text-base truncate">Kareti satwik</h4>
+                            <p class="text-sm text-slate-400 font-medium mt-0.5 break-all">satwikk47@gmail.com</p>
                         </div>
-                        <i data-lucide="quote" class="text-blue-100/50 w-12 h-12"></i>
+                        <i data-lucide="quote" class="text-blue-100/50 w-12 h-12 flex-shrink-0"></i>
                     </div>
                 </div>
 
-                <div class="bg-white p-10 rounded-4xl border-2 border-slate-100 card-hover text-left flex flex-col justify-between h-full min-h-[400px] relative font-sans flex-none w-full md:w-[calc(33.333%-1.34rem)] snap-center">
-                    <div>
+                <div class="bg-white p-6 md:p-10 rounded-3xl md:rounded-4xl border-2 border-slate-100 card-hover text-left flex flex-col justify-between h-full min-h-[350px] md:min-h-[400px] relative font-sans flex-none w-full md:w-[calc(33.333%-1.34rem)] snap-center overflow-hidden">
+                    <div class="w-full min-w-0">
                          <div class="flex text-primary mb-6 space-x-1">
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                             <i data-lucide="star" class="w-5 h-5 text-slate-300"></i> </div>
-                        <p class="text-slate-700 mb-10 leading-relaxed text-lg">"Dear Team Weliving, My stay at Weliving flats was very good and comfortable. The hosts were incredibly friendly and helpful, and we loved the overall experience."</p>
+                        <p class="text-slate-700 mb-10 leading-relaxed text-base md:text-lg break-words w-full">"Dear Team Weliving, My stay at Weliving flats was very good and comfortable. The hosts were incredibly friendly and helpful, and we loved the overall experience."</p>
                     </div>
-                    <div class="flex justify-between items-end">
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-base">Abhinay Dulam</h4>
-                            <p class="text-sm text-slate-400 font-medium mt-0.5">abhinaydulam14@gmail.com</p>
+                    <div class="flex justify-between items-end w-full min-w-0">
+                        <div class="min-w-0 flex-1 pr-4">
+                            <h4 class="font-bold text-slate-900 text-base truncate">Abhinay Dulam</h4>
+                            <p class="text-sm text-slate-400 font-medium mt-0.5 break-all">abhinaydulam14@gmail.com</p>
                         </div>
-                        <i data-lucide="quote" class="text-blue-100/50 w-12 h-12"></i>
+                        <i data-lucide="quote" class="text-blue-100/50 w-12 h-12 flex-shrink-0"></i>
                     </div>
                 </div>
 
-                <div class="bg-white p-10 rounded-4xl border-2 border-slate-100 card-hover text-left flex flex-col justify-between h-full min-h-[400px] relative font-sans flex-none w-full md:w-[calc(33.333%-1.34rem)] snap-center">
-                    <div>
+                <div class="bg-white p-6 md:p-10 rounded-3xl md:rounded-4xl border-2 border-slate-100 card-hover text-left flex flex-col justify-between h-full min-h-[350px] md:min-h-[400px] relative font-sans flex-none w-full md:w-[calc(33.333%-1.34rem)] snap-center overflow-hidden">
+                    <div class="w-full min-w-0">
                          <div class="flex text-primary mb-6 space-x-1">
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
@@ -444,38 +448,38 @@
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                         </div>
-                        <p class="text-slate-700 mb-10 leading-relaxed text-lg">"I had a wonderful and comfortable stay at the Weliving flats. The hosts were incredibly friendly and accommodating, making our experience truly enjoyable."</p>
+                        <p class="text-slate-700 mb-10 leading-relaxed text-base md:text-lg break-words w-full">"I had a wonderful and comfortable stay at the Weliving flats. The hosts were incredibly friendly and accommodating, making our experience truly enjoyable."</p>
                     </div>
-                    <div class="flex justify-between items-end">
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-base">Rohan Sharma</h4>
-                            <p class="text-sm text-slate-400 font-medium mt-0.5">rohansharma68@gmail.com</p>
+                    <div class="flex justify-between items-end w-full min-w-0">
+                        <div class="min-w-0 flex-1 pr-4">
+                            <h4 class="font-bold text-slate-900 text-base truncate">Rohan Sharma</h4>
+                            <p class="text-sm text-slate-400 font-medium mt-0.5 break-all">rohansharma68@gmail.com</p>
                         </div>
-                        <i data-lucide="quote" class="text-blue-100/50 w-12 h-12"></i>
+                        <i data-lucide="quote" class="text-blue-100/50 w-12 h-12 flex-shrink-0"></i>
                     </div>
                 </div>
 
-                <div class="bg-white p-10 rounded-4xl border-2 border-slate-100 card-hover text-left flex flex-col justify-between h-full min-h-[400px] relative font-sans flex-none w-full md:w-[calc(33.333%-1.34rem)] snap-center">
-                    <div>
+                <div class="bg-white p-6 md:p-10 rounded-3xl md:rounded-4xl border-2 border-slate-100 card-hover text-left flex flex-col justify-between h-full min-h-[350px] md:min-h-[400px] relative font-sans flex-none w-full md:w-[calc(33.333%-1.34rem)] snap-center overflow-hidden">
+                    <div class="w-full min-w-0">
                          <div class="flex text-primary mb-6 space-x-1">
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                             <i data-lucide="star" class="w-5 h-5 text-slate-300"></i> </div>
-                        <p class="text-slate-700 mb-10 leading-relaxed text-lg">"I had an awesome time at the Weliving flats! The hosts were super chill and really made sure we had a blast."</p>
+                        <p class="text-slate-700 mb-10 leading-relaxed text-base md:text-lg break-words w-full">"I had an awesome time at the Weliving flats! The hosts were super chill and really made sure we had a blast."</p>
                     </div>
-                    <div class="flex justify-between items-end">
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-base">Anika Verma</h4>
-                            <p class="text-sm text-slate-400 font-medium mt-0.5">anikaverma@gmail.com</p>
+                    <div class="flex justify-between items-end w-full min-w-0">
+                        <div class="min-w-0 flex-1 pr-4">
+                            <h4 class="font-bold text-slate-900 text-base truncate">Anika Verma</h4>
+                            <p class="text-sm text-slate-400 font-medium mt-0.5 break-all">anikaverma@gmail.com</p>
                         </div>
-                        <i data-lucide="quote" class="text-blue-100/50 w-12 h-12"></i>
+                        <i data-lucide="quote" class="text-blue-100/50 w-12 h-12 flex-shrink-0"></i>
                     </div>
                 </div>
 
-                <div class="bg-white p-10 rounded-4xl border-2 border-slate-100 card-hover text-left flex flex-col justify-between h-full min-h-[400px] relative font-sans flex-none w-full md:w-[calc(33.333%-1.34rem)] snap-center">
-                    <div>
+                <div class="bg-white p-6 md:p-10 rounded-3xl md:rounded-4xl border-2 border-slate-100 card-hover text-left flex flex-col justify-between h-full min-h-[350px] md:min-h-[400px] relative font-sans flex-none w-full md:w-[calc(33.333%-1.34rem)] snap-center overflow-hidden">
+                    <div class="w-full min-w-0">
                          <div class="flex text-primary mb-6 space-x-1">
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
@@ -483,19 +487,19 @@
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                             <i data-lucide="star" class="fill-current w-5 h-5"></i>
                         </div>
-                        <p class="text-slate-700 mb-10 leading-relaxed text-lg">"My stay at the Weliving flats was absolutely fantastic! The hosts were incredibly laid-back and went above and beyond to ensure we had an unforgettable experience."</p>
+                        <p class="text-slate-700 mb-10 leading-relaxed text-base md:text-lg break-words w-full">"My stay at the Weliving flats was absolutely fantastic! The hosts were incredibly laid-back and went above and beyond to ensure we had an unforgettable experience."</p>
                     </div>
-                    <div class="flex justify-between items-end">
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-base">Rohan Patel</h4>
-                            <p class="text-sm text-slate-400 font-medium mt-0.5">rohanpatel@gmail.com</p>
+                    <div class="flex justify-between items-end w-full min-w-0">
+                        <div class="min-w-0 flex-1 pr-4">
+                            <h4 class="font-bold text-slate-900 text-base truncate">Rohan Patel</h4>
+                            <p class="text-sm text-slate-400 font-medium mt-0.5 break-all">rohanpatel@gmail.com</p>
                         </div>
-                        <i data-lucide="quote" class="text-blue-100/50 w-12 h-12"></i>
+                        <i data-lucide="quote" class="text-blue-100/50 w-12 h-12 flex-shrink-0"></i>
                     </div>
                 </div>
             </div>
 
-            <button id="next-testimonial" aria-label="Next Testimonial" class="absolute -right-2 lg:-right-12 top-1/2 -translate-y-1/2 bg-white w-10 h-10 lg:w-12 lg:h-12 rounded-full border-2 border-slate-100 flex items-center justify-center text-slate-600 hover:text-primary hover:scale-110 transition z-20 card-hover shadow-md">
+            <button id="next-testimonial" aria-label="Next Testimonial" class="hidden md:flex absolute -right-2 lg:-right-12 top-1/2 -translate-y-1/2 bg-white w-10 h-10 lg:w-12 lg:h-12 rounded-full border-2 border-slate-100 items-center justify-center text-slate-600 hover:text-primary hover:scale-110 transition z-20 card-hover shadow-md">
                 <i data-lucide="arrow-right" class="w-5 h-5"></i>
             </button>
         </div>
@@ -528,12 +532,7 @@
             <div class="bg-primary rounded-4xl p-16 text-center text-white border-2 border-white/10 card-hover max-w-7xl mx-auto shadow-2xl" data-aos="zoom-in">
                 <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Ready to Grow Together?</h2>
                 <p class="text-blue-100 mb-8 font-normal text-lg font-sans">Join thousands of partners already benefiting from WELIVING</p>
-                <a href="#contact">
-                    <button class="bg-white text-primary px-10 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition transform hover:scale-105 shadow-md mx-auto block font-sans">
-                        Get Started Today
-                    </button>
-                </a>
-
+                <button class="bg-white text-primary px-10 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition transform hover:scale-105 shadow-md mx-auto block font-heading">Get Started Today</button>
             </div>
         </div>
     </section>
